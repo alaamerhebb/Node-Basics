@@ -66,8 +66,15 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
+ function hello(){
   console.log('hello!')
+}
+/**
+ * Help
+ *  @returns {void}
+ */
+ function help(){
+  console.log('helping you!')
 }
 
 
