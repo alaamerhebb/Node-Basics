@@ -16,8 +16,8 @@ function startApp(name){
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
 }
-items=['hello','hello with text'];
-
+helps=['hello','hello with text'];
+items=['alaa','merheb','mhmd'];
 /**
  * Decides what to do depending on the data that was received
  * This function receives the input sent by the user.
@@ -41,12 +41,16 @@ function onDataReceived(text) {
   else if(text.startsWith("hello") ){
     hello(t);
   }
+  else if(text.startsWith("list") ){
+    list();
+  }
   else if(text === 'help\n'){
     help()
   }
   else{
     unknownCommand(text);
   }
+
 }
 
 
@@ -74,7 +78,7 @@ function hello(arg){
  */
  function help(){
    console.log('the help list is :');
-   items.map(value =>{
+   helps.map(value =>{
     console.log(value)
    })
   
@@ -90,6 +94,13 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
+
+function list(){
+ items.map(value => {
+   console.log((items.indexOf(value)+1)+'-'+value);
+ })
+}
+
 
 // The following line starts the application
 startApp("alaa merheb")
