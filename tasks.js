@@ -18,6 +18,7 @@ function startApp(name){
 }
 helps=['hello','hello with text'];
 items=['alaa','merheb','mhmd'];
+
 /**
  * Decides what to do depending on the data that was received
  * This function receives the input sent by the user.
@@ -43,6 +44,9 @@ function onDataReceived(text) {
   }
   else if(text.startsWith("list") ){
     list();
+  }
+  else if(text.startsWith("add") ){
+    add(t);
   }
   else if(text === 'help\n'){
     help()
@@ -100,7 +104,14 @@ function list(){
    console.log((items.indexOf(value)+1)+'-'+value);
  })
 }
-
+function add(text){
+  let myarray=text.split(' ');
+  if(text=='add'){
+    console.log('error');
+  }
+  else{
+  items.push(myarray[1]);}
+}
 
 // The following line starts the application
 startApp("alaa merheb")
