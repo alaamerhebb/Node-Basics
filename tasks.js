@@ -16,7 +16,7 @@ function startApp(name){
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
 }
-
+items=['hello','hello with text'];
 
 /**
  * Decides what to do depending on the data that was received
@@ -73,7 +73,11 @@ function hello(arg){
  *  @returns {void}
  */
  function help(){
-  console.log('helping you!')
+   console.log('the help list is :');
+   items.map(value =>{
+    console.log(value)
+   })
+  
 }
 
 
