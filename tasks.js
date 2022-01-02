@@ -54,6 +54,12 @@ function onDataReceived(text) {
   else if (text.startsWith("remove")) {
     remove(t);
   }
+  else if (text.startsWith("check")) {
+    check(t);
+  }
+  else if (text.startsWith("uncheck")) {
+    uncheck(t);
+  }
   else if(text === 'help\n'){
     help()
   }
@@ -91,6 +97,35 @@ function hello(arg){
 helps.map(value =>{
 console.log(value)
 })
+}
+function check(arg) {
+  const myArray = arg.split(" ");
+  if (arg == "check") {
+    console.log('error commend not found')
+  }
+  else if ((isNaN(myArray[1]) || ((myArray[1] - 1) > items.length))) {
+    console.log('enter a valid number');
+  }
+  else {
+    let pos = myArray[1] - 1;
+    let oldItem = (items[myArray[1] - 1]).substring(3);
+    items.splice(pos, 1, '[✓]' + oldItem);
+
+  }
+}
+function uncheck(arg) {
+  const myArray = arg.split(" ");
+  if (arg == "uncheck") {
+    console.log('error commend not found')
+  }
+  else if ((isNaN(myArray[1]) || ((myArray[1] - 1) > items.length))) {
+    console.log('enter a valid number');
+  }
+  else {
+    let pos = myArray[1] - 1;
+    let oldItem = (items[myArray[1] - 1]).substring(3);
+    items.splice(pos, 1, '[ ]' + oldItem);
+  }
 }
 /**
  * remove(remove item from the list)
