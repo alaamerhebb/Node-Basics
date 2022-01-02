@@ -90,12 +90,18 @@ function hello(arg){
    })
   
 }
-function remove(item) {
+/**
+ * remove(remove item from the list)
+ * 
+ * @returns {void}
+ */
+ function remove(item) {
   const myArray = item.split(" ");
-  item == "remove " ? items.pop() : items.splice((myArray[1]-1), 1);
-
+  if((myArray[1]-1)<items.length){
+  item == "remove " ? item.pop() : items.splice((myArray[1]-1), 1);
+  }
+  else{console.log('this number not exist');}
 }
-
 
 /**
  * Exits the application
