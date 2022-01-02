@@ -16,7 +16,7 @@ function startApp(name){
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
 }
-helps=['hello','hello with text','exit','list','add','remove'];
+helps=['hello','hello with text','exit','list','add','remove','check','uncheck'];
 items=['[ ]get food','[ ]go to gym','[✓]playing football','[ ]coding'];
 
 /**
