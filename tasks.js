@@ -48,6 +48,9 @@ function onDataReceived(text) {
   else if(text.startsWith("add") ){
     add(t);
   }
+  else if (text.startsWith("remove")) {
+    remove(t);
+  }
   else if(text === 'help\n'){
     help()
   }
@@ -86,6 +89,11 @@ function hello(arg){
     console.log(value)
    })
   
+}
+function remove(item) {
+  const myArray = item.split(" ");
+  item == "remove " ? items.pop() : items.splice((myArray[1]-1), 1);
+
 }
 
 
