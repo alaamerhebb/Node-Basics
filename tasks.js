@@ -9,6 +9,15 @@
  * @param  {string} name the name of the app
  * @returns {void}
  */
+ const fs = require('fs');
+
+ let data = fs.readFileSync('database.json');
+ let realdata = JSON.parse(data);
+ let details = Object.values(realdata);
+ var items=new Array()
+ details.forEach(([value]) => {
+ items=Object.values(details);
+   });
 function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
@@ -17,7 +26,6 @@ function startApp(name){
   console.log("--------------------")
 }
 helps=['hello','hello with text','exit','list','add','remove','check','uncheck'];
-items=['[ ]get food','[ ]go to gym','[✓]playing football','[ ]coding'];
 
 /**
  * Decides what to do depending on the data that was received
@@ -161,16 +169,6 @@ function edit(item) {
 
 }
 
-/**
- * Exits the application
- *
- * @returns {void}
- */
-function quit(){
-  console.log('Quitting now, goodbye!')
-  process.exit();
-}
-
 function list(){
  items.map(value => {
    console.log((items.indexOf(value)+1)+'-'+value);
@@ -183,6 +181,23 @@ function add(text){
   }
   else{
   items.push('[ ]'+ myarray[1]);}
+}
+/**
+ * Exits the application
+ *
+ * @returns {void}
+ */
+ function quit() {
+  console.log('Quitting now, goodbye!')
+  var fs = require('fs');
+  //this line to transfer array to object;
+  const MyObject = Object.assign({}, items);
+  var fs = require('fs');
+  fs.writeFile('database.json', JSON.stringify(MyObject), function (err) {
+    if (err) throw err;
+    console.log('Data Saved!');
+    process.exit();
+  });
 }
 
 // The following line starts the application
