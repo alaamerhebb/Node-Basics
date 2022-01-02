@@ -39,10 +39,13 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text.startsWith("hello") ){
+  else if(text.startsWith("hello")){
     hello(t);
   }
-  else if(text.startsWith("list") ){
+  else if(text.startsWith("edit")) {
+    edit(t);
+  }
+  else if(text.startsWith("list")){
     list();
   }
   else if(text.startsWith("add") ){
@@ -85,22 +88,42 @@ function hello(arg){
  */
  function help(){
    console.log('the help list is :');
-   helps.map(value =>{
-    console.log(value)
-   })
-  
+helps.map(value =>{
+console.log(value)
+})
 }
 /**
  * remove(remove item from the list)
- * 
+ *
  * @returns {void}
  */
- function remove(item) {
+  function remove(item) {
   const myArray = item.split(" ");
   if((myArray[1]-1)<items.length){
   item == "remove " ? item.pop() : items.splice((myArray[1]-1), 1);
   }
   else{console.log('this number not exist');}
+}
+function edit(item) {
+  let myArray = item.split(" ");
+  if (item == 'edit') {
+    console.log('error');
+  }
+  else if (isNaN(myArray[1])) {
+    items.pop();
+    myArray.shift();
+    let text = myArray.join(' ');
+    items.push(text);
+  }
+  else {
+    let pos =myArray[1] - 1;
+    myArray.shift();
+    myArray.shift();
+    items.splice(pos, 1, myArray.join(' '));
+
+  }
+
+
 }
 
 /**
