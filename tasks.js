@@ -11,13 +11,19 @@
  */
  const fs = require('fs');
 
- let data = fs.readFileSync('database.json');
- let realdata = JSON.parse(data);
- let details = Object.values(realdata);
- var items=new Array()
- details.forEach(([value]) => {
- items=Object.values(details);
-   });
+ const { argv } = require('process');
+let file = process.argv[2];
+if (argv.length<3) {
+  file = 'database.json';
+}
+
+ let data = fs.readFileSync(file);
+let realdata = JSON.parse(data);
+let details = Object.values(realdata);
+var items = new Array()
+details.forEach(([value]) => {
+  items = Object.values(details);
+});
 function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
@@ -135,18 +141,7 @@ function uncheck(arg) {
     items.splice(pos, 1, '[ ]' + oldItem);
   }
 }
-/**
- * remove(remove item from the list)
- *
- * @returns {void}
- */
-  function remove(item) {
-  const myArray = item.split(" ");
-  if((myArray[1]-1)<items.length){
-  item == "remove " ? item.pop() : items.splice((myArray[1]-1), 1);
-  }
-  else{console.log('this number not exist');}
-}
+
 function edit(item) {
   let myArray = item.split(" ");
   if (item == 'edit') {
@@ -183,6 +178,18 @@ function add(text){
   items.push('[ ]'+ myarray[1]);}
 }
 /**
+ * remove(remove item from the list)
+ *
+ * @returns {void}
+ */
+ function remove(item) {
+  const myArray = item.split(" ");
+  if((myArray[1]-1)<items.length){
+  item == "remove " ? item.pop() : items.splice((myArray[1]-1), 1);
+  }
+  else{console.log('this number not exist');}
+}
+/**
  * Exits the application
  *
  * @returns {void}
@@ -193,7 +200,8 @@ function add(text){
   //this line to transfer array to object;
   const MyObject = Object.assign({}, items);
   var fs = require('fs');
-  fs.writeFile('database.json', JSON.stringify(MyObject), function (err) {
+
+  fs.writeFile(file, JSON.stringify(MyObject), function (err) {
     if (err) throw err;
     console.log('Data Saved!');
     process.exit();
