@@ -17,7 +17,7 @@ function startApp(name){
   console.log("--------------------")
 }
 helps=['hello','hello with text','exit','list','add','remove'];
-items=['alaa','merheb','mhmd'];
+items=['[ ]get food','[ ]go to gym','[✓]playing football','[ ]coding'];
 
 /**
  * Decides what to do depending on the data that was received
@@ -147,7 +147,7 @@ function add(text){
     console.log('error');
   }
   else{
-  items.push(myarray[1]);}
+  items.push('[ ]'+ myarray[1]);}
 }
 
 // The following line starts the application
